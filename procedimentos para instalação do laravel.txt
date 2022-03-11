@@ -1,0 +1,96 @@
+- sudo apt update && sudo apt upgrade -y
+--------------------------------------------------------------------------------------------
+- sudo apt install git
+- git --version
+----------------------------------------------------------------------------------------------
+- baixa o Google chrome, o VS Code e o GitHub Desktop e instala
+----------------------------------------------------------------------------------------------
+- sudo apt install php
+- sudo apt install php-xml
+- sudo apt install php-mysql
+- php -v
+-----------------------------------------------------------------------------------------------
+- instala o composer
+
+	~$ php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+	~$ php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa72f40b5f787e49f22d4c2f19492ac310e8cba5b96ac8b64115ac402c8cd292b8a03482574915d1a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+	~$ php composer-setup.php
+	~$ php -r "unlink('composer-setup.php');"
+	~$ sudo mv composer.phar /usr/local/bin/composer
+- composer --version
+------------------------------------------------------------------------------------------------
+- navega até a pasta onde está a pasta do GitHub e dá o comando para criar o projeto laravel
+       ~$ composer create-project laravel/laravel nomedoprojeto
+-----------------------------------------------------------------------------------------------------------
+- dá o comando php artisan serve e verifica se o site do laravel aparece no endereço 127.0.0.1:8000
+-----------------------------------------------------------------------------------------------------------
+- instala o mysql e configura seguindo o tutorial do youtube - https://youtu.be/CBK7c1xp-zI
+	
+	link do site: https://dev.mysql.com/downloads/repo/apt/
+	
+	~$ wget -c https://repo.mysql.com//mysql-apt-config_0.8.20-1_all.deb
+	~$ sudo dpkg -i mysql-apt-config_0.8.20-1_all.deb
+	~$ sudo apt update && sudo apt upgrade -y
+	~$ sudo apt install mysql-server
+-------------------------------------------------------------------------------------------------------------
+- Configuração do mysql e instalação da IDE Workbench
+
+	~$ sudo mysql_secure_installation
+	~$ sudo systemctl status mysql
+	~$ sudo systemctl enable mysql
+	~$ sudo apt install mysql-workbench-community
+-------------------------------------------------------------------------------------------------------------
+- testando mysql e mysql workbench
+
+	~$ sudo mysql -u root -p
+
+Digita a senha root e depois digita o comando show databases;
+
+Ao mostrar os bancos de dados do mysql iremos aproveitar e já criar o nosso banco que será vinculado ao projeto laravel.
+
+Para isso, basta digitar o comando create database nomedoprojeto;	
+
+  Para o workbench basta abrir o programa, digitar a senha criada para o mysql no terminal e abrindo está OK.
+---------------------------------------------------------------------------------------------------------------
+- configuração prévia no mysql workbench antes de vincular o projeto Laravel ao mysql
+
+	Abre o mysql worbench, vai em Database -> Manage Connections... e clica no botão "Store in Keychain". 
+
+Ao abrir a janela digita a senha root do mysql e está terminada a configuração.
+------------------------------------------------------------------------------------------------------------------
+- vincula o projeto laravel ao banco de dados do mysql
+
+	1 - Abre o vs code e clica em "Open Folder", navega até o diretório Laravel-Projects, clica na pasta sisklin e depois clica em OK.
+	2 - Marca a caixa em confiar nos autores da pasta pai e depois clica em confiar nos autores
+	3 - Na aba lateral de navegação dos ítens do projeto, clique no arquivo .env
+	
+		Altere os seguintes campos
+		
+			DB_CONNECTION=mysql
+			DB_HOST=127.0.0.1
+			DB_PORT=3306
+			DB_DATABASE=laravel "Nome do banco de dados"  
+			DB_USERNAME="root"
+			DB_PASSWORD="digite a senha aqui dentro"    "senha root do mysql"
+			
+	4 - Abra o terminal do próprio VS Code e digite o comando: php artisan migrate
+
+Apenas para teste, abra o mysql workbench e veja se foram criadas mais tabelas no database do projeto
+----------------------------------------------------------------------------------------------------------------
+
+Pronto. O ambiente está totalmente configurado para começar a desenvolver o projeto laravel.
+---------------------------------------------------------------------------------------------------------------------------------------------------
+PREPARANDO O VS CODE PARA TRABALHAR COM PROJETO LARAVEL 
+
+AQUI ESTAREI COLOCANDO AS MINHAS PREFERÊNCIAS PARA USO DO VS CODE 
+
+1. INSTALAÇÃO DE EXTENSÕES
+
+   # PORTUGUESE (BRAZIL) LANGUAGE PACK FOR VISUAL STUDIO CODE
+   # MATERIAL ICON THEME
+   # BRAKET PAIR COLORIZER 2
+   # LARAVEL EXTENSION PACK
+	
+	
+
+	
