@@ -27,7 +27,26 @@ copyed.
 
 	$ sudo chown -R ricksmc GitHub/
  </li>
+ <li> Inicialize the git and configure the user that will work on the project with the commands below: 
+	$ git init
+	$ git config --global user.email "myemail@examplecom"
+	$ git config --global user.name GithubNickname
+
+ <li> Clone the repository from GitHub using the following command:
+
+	$ git clone <em><strong>SSH Key Code</em></strong>
+ </li>
+ <li> To open the project over VSCode directly on the CLI Linux, access the directory where the project is localized and use the command "code ./"</li>
 </ol>
- 
-P.S - Inside the direcory where do you are storage your project, example: /home/ricksmc/GitHu
+<em><strong>P.S - Inside the direcory where do you are storage your project, example: /home/ricksmc/GitHub<em><strong>
+
+If you've made changes to your project and are no longer going to work for theday, it's recommended to "push" it to GitHub. To do this, use the following command
+described below:
+
+ - <b>$</b><em>git add *</em>
+ - <b>$</b><em>git commit -m "DescribeHereTheChanges"</em>
+ - <b>$</b><em>git push origin</em> 
+
+
+
 
