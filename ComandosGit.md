@@ -34,7 +34,7 @@ copyed.
 
  <li> Clone the repository from GitHub using the following command:
 
-	$ git clone <em><strong>SSH Key Code</em></strong>
+	$ git clone SSH Key Code
  </li>
  <li> To open the project over VSCode directly on the CLI Linux, access the directory where the project is localized and use the command "code ./"</li>
 </ol>
