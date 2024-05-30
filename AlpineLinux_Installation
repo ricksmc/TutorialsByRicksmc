@@ -1,0 +1,46 @@
+MANUAL ATUALIZADO DE INSTALAÇÃO DO ALPINE LINUX 2024
+
+PRIMEIRA OBSERVAÇÃO
+
+	Se for usar IP fixo, precisa primeiro configurar a rede manualmente. como a mídia não vem com os programas mais conhecidos teremos que utilizar as ferramentas mais básicas do Linux
+
+1 passo - vamos criar o arquivo "interfaces" (sem aspas) dentro da pasta /ect/network com o comando [touch interfaces] (sem colchetes)
+2 passo - abrir este arquivo utilizando [vi interfaces]
+3 passo - adicionar o seguinte conteudo dentro do arquivo
+
+auto lo
+iface lo inet loopback
+
+auto eth0 (se a interface for eth0. Para confirmar basta dar o comando "ip a" no terminal)
+iface eth0 inet static
+	address 192.168.x.x -> IP FIXO QUE VAI SER ATRIBUÍDO AO PC
+	netmask 255.255.255.0
+	gateway 192.168.x.x -> IP DO ROTEADOR
+	hostname localhost
+
+feito isto, pressionar a tecla ESC e depois digitar :wq para salvar e sair da tela de configuração
+
+4 passo - criar o arquivo "resolv.conf" dentro da pasta /etc
+5 passo - abrir este arquivo utilizando o comando [vi resolv.conf]
+6 passo - adicionar o seguinte conteudo dentro do arquivo
+
+nameserver 192.168.x.x -> IP DO ROTEADOR
+nameserver 8.8.8.8 -> IP DO GOOGLE
+
+feito isto, pressionar a tecla ESC e depois digitar :wq para salvar e sair da tela de configuração
+
+7 passo - dar o comando "service networking restart" para poder carregar as alterações feitas
+8 passo - dar o comando "ip a" e verificar se na interface de rede já aparecem as configurações realizadas
+9 passo - caso afirmativo, dar o comando "ping -c 3 google.com" para ver se a interface de rede vai pingar no ip do google
+10 passo - se o ping deu certo, vamos instalar o programa {cfdisk} para que ppossamos criar nossa tabela de partições. para isto
+basta dar o comando "apk add cfdisk"
+11 passo - feita a instalação, dá o comando "cfdisk /dev/sda" para que o programa abra e possa ser feita a configuração das tabelas de partições
+
+Obs.: Apenas como sugestão de particionamento
+
+	500 MB /boot/efi ou BIOS Boot
+	2GB Linux Swap
+	20GB Linux Filesystem
+	restante do espaço como /home Linux Filesystem
+
+12 passo - feito tudo pode agora dar o comando setup-alpine para inciar a instalação e aí segue o tutorial normalmente. Link do tutorial -> https://linuxiac.com/how-to-install-alpine-linux/
