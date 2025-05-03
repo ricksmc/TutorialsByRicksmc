@@ -105,6 +105,18 @@ http://localhost:3000
 
 If the browser shows the test page, your project is done.
 
+Step 14 - make a backup of the container
+
+docker commit projectname projectnamebkp_aaaammdd
+docker save -o projectname.tar projectnamebkp_aaaammdd
+
+Step 15 - Tranfering container project to the VPS
+
+scp projectname.tar usuario@ip_da_vps:/home/usuario/
+
+
+
+
 
 
 
