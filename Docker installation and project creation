@@ -1,0 +1,16 @@
+Step 1 - Docker Installation
+
+apt update && apt upgrade -y
+apt install -y ca-certificates curl gnupg
+curl -fsSL https://get.docker.com | bash
+docker --version
+
+Setp 2 - Container Creation
+
+docker run -dit --name projectname -p 3000:3000 -v projectname_dados:/dados ubuntu:latest
+
+Step 3 - Execution Container
+
+docker exec -it projectname bash
+
+
