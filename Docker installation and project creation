@@ -17,4 +17,95 @@ Step 4 - Execution Container
 
 docker exec -it projectname bash
 
+Step 5 - Configuring Container
+
+apt update && apt upgrade -y
+apt install curl wget nano git -y
+curl -fsSL https://deb.nodesource.com/setup_current.x | bash -
+apt install nodejs -y
+apt install mariadb-server -y
+
+Step 6 - Configuring mariadb-server
+ 
+Step 6.1 - Verify mariadb status
+
+service mariadb status
+
+If status shows the message "MariaDB is stopped", execute this command below
+
+service mariadb start
+service mariadb enable
+
+Step 6.2 - Creating a projectname Database and configuring users
+
+mariadb -u root
+SHOW DATABASES; <- Only to show if they appear databases 
+CREATE projectnamedb;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'create_a_newPasswordForRoot';
+CREATE USER 'admin'@'%' IDENTIFIED BY 'Create_a_Secure_Password';
+GRANT ALL PRIVILEGES ON projectnamedb.* TO 'admin'@'%';
+FLUSH PRIVILEGES;
+EXIT;
+
+Step 7 - Create a Folder for the project
+
+cd /home/ubuntu
+mkdir projectname
+cd projectname
+
+Step 8 - Verify if all the programs are installed correctly
+
+nano --version
+git --version
+curl --version
+wget --version
+node -v
+npm -v
+
+Step 9 - Configuring node in projectname folder
+
+cd /home/ubuntu/projectname
+npm init -y
+npm install express
+
+Step 10 - create a basic node server
+
+touch server.js
+nano server.js
+
+Inside the server.js file, enter this code to test.
+
+const express = require('express');
+const app = express();
+
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.send('SIGEPI está rodando!');
+});
+
+app.listen(3000, () => {
+    console.log('Servidor rodando na porta 3000');
+});
+
+Step 11 - Verify if the node.js execute
+
+node server.js
+
+If the message "Server running on port 3000" appears, it means that the server is working properly.
+
+Step 12 - Connecting your database to the project
+
+npm install mariadb
+
+Step 13 - Checking if the test page appears at the local address
+
+node server.js
+http://localhost:3000
+
+If the browser shows the test page, your project is done.
+
+
+
+
 
