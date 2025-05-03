@@ -114,6 +114,36 @@ Step 15 - Tranfering container project to the VPS
 
 scp projectname.tar usuario@ip_da_vps:/home/usuario/
 
+Step 16 - Na VPS, vou precisar apenas instalar o docker. Depois basta rodar o comando
+
+docker load -i projectname.tar
+
+com este comando estou importando o meu container pra dentro do docker da vps. Para verificar se o container foi
+carregado corretamente digito o comando
+
+docker images
+
+Se aparecer algo como 
+
+REPOSITORY                 TAG       IMAGE ID       CREATED           SIZE
+projectnamebkp_aaaammdd   latest    a2c8d6fe5e16   10 hours ago      809MB
+
+significa que o container foi carregado. Agora eu executo
+
+docker run -dit --name projectname -p 3000:3000 projectnamebkp_aaaammdd
+
+verifica em docker ps -a se o container esta em execucao. Caso nao, digita o comando
+
+docker start projectname
+
+e depois
+
+docker exec -it projectname bash
+
+Pronto. Fazendo estes procedimentos o container ja estara rodando dentro da VPS
+
+
+
 
 
 
