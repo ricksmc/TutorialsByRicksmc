@@ -32,8 +32,9 @@ feito isto, pressionar a tecla ESC e depois digitar :wq para salvar e sair da te
 7 passo - dar o comando "service networking restart" para poder carregar as alterações feitas
 8 passo - dar o comando "ip a" e verificar se na interface de rede já aparecem as configurações realizadas
 9 passo - caso afirmativo, dar o comando "ping -c 3 google.com" para ver se a interface de rede vai pingar no ip do google
-10 passo - se o ping deu certo, vamos instalar o programa {cfdisk} para que ppossamos criar nossa tabela de partições. para isto
-basta dar o comando "apk add cfdisk"
+10 passo - se o ping deu certo, executar o comando "setup-apkrepos -cf" para carregar a lista de repositórios. 
+
+11 - vamos instalar o programa {cfdisk} para que ppossamos criar nossa tabela de partições. para isto, basta dar o comando "apk add cfdisk"
 11 passo - feita a instalação, dá o comando "cfdisk /dev/sda" para que o programa abra e possa ser feita a configuração das tabelas de partições
 
 Obs.: Apenas como sugestão de particionamento
